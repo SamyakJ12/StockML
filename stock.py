@@ -2,6 +2,7 @@ import yfinance as yf
 import pandas as pd
 import schedule
 import time
+from datetime import datetime
 
 def fetch_stock_data(ticker, start_date, end_date, file_name=None):
     stock_data = yf.download(ticker, start=start_date, end=end_date, interval='1d')
@@ -15,5 +16,10 @@ def fetch_stock_data(ticker, start_date, end_date, file_name=None):
     
     return stock_data
 
-stock_data = fetch_stock_data('AAPL', '2023-01-01', '2024-12-01', file_name='stock_data.csv')
-print(stock_data)
+today = datetime.now().date()
+print(today)
+
+    
+
+stock_data = fetch_stock_data('AAPL', '2023-01-01', today, file_name='stock_data.csv')
+#print(stock_data)
